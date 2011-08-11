@@ -1,11 +1,12 @@
+var Lorem;
 (function(){
 
-    function Lorem()
+    Lorem = function()
     {
         this.type = Lorem.TEXT;
         this.query = null;
         this.data = null;
-    }
+    };
     Lorem.IMAGE = 1;
     Lorem.TEXT = 2;
     Lorem.TYPE = {
@@ -104,17 +105,24 @@
     };
 
     //Register as jQuery
-    if (jQuery)
+    if (typeof jQuery != 'undefined')
     {
-        jQuery.fn.lorem = function()
-        {
-            $(this).each(function() {
-                var lorem = new Lorem;
-                lorem.type = $(this).is('img') ? Lorem.IMAGE : Lorem.TEXT;
-                lorem.query = $(this).attr('data-lorem');
-                lorem.createLorem(this);
-            })
-        }
+        (function($) {
+            $.fn.lorem = function()
+            {
+                $(this).each(function() {
+                    var lorem = new Lorem;
+                    lorem.type = $(this).is('img') ? Lorem.IMAGE : Lorem.TEXT;
+                    lorem.query = $(this).attr('data-lorem');
+                    lorem.createLorem(this);
+                })
+            };
+
+            //If developer run this javascript, then we can run the lorem.js
+            $(document).ready(function(){
+                $('[data-lorem]').lorem();
+            });
+        })(jQuery);
     }
 
 })();
