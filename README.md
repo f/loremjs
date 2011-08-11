@@ -10,9 +10,7 @@ Implementation of Lorem.js is so simple,
 
 You just download and add
 
-``` js
-<script src="path/to/lorem.js"></script>
-```
+    <script src="path/to/lorem.js"></script>
 
 into your website/application and run.
 
