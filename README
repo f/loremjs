@@ -23,6 +23,8 @@ That's it.
 And Lorem.js uses lorempixum.com for images for now. You just write
 
 <img src="" data-lorem="sports/1/Test message" width="223" height="223">
+<img src="" data-lorem="gray" width="100" height="124">
+<img src="" data-lorem="gray animals" width="100" height="124">
 
 And watch what happens :)
 
