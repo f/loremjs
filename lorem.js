@@ -1,9 +1,8 @@
 var Lorem;
-(function(){
+(function() {
 
     //Create a class named Lorem and constructor
-    Lorem = function()
-    {
+    Lorem = function() {
         //Default values.
         this.type = null;
         this.query = null;
@@ -35,15 +34,12 @@ var Lorem;
         return Math.floor(Math.random() * (max - min + 1)) + min;
     };
     //text creator method with parameters: how many, what
-    Lorem.prototype.createText = function(count, type)
-    {
-        switch (type)
-        {
+    Lorem.prototype.createText = function(count, type) {
+        switch (type) {
             //paragraphs are loads of sentences.
             case Lorem.TYPE.PARAGRAPH:
                 var paragraphs = new Array;
-                for (var i = 0; i < count; i++)
-                {
+                for (var i = 0; i < count; i++) {
                     var paragraphLength = this.randomInt(10, 20);
                     var paragraph = this.createText(paragraphLength, Lorem.TYPE.SENTENCE);
                     paragraphs.push(paragraph);
@@ -53,11 +49,10 @@ var Lorem;
             //sentences are loads of words.
             case Lorem.TYPE.SENTENCE:
                 var sentences = new Array;
-                for (var i = 0; i < count; i++)
-                {
+                for (var i = 0; i < count; i++) {
                     var sentenceLength = this.randomInt(5, 10);
                     var words = this.createText(sentenceLength, Lorem.TYPE.WORD).split(' ');
-                    words[0] = words[0].substr(0,1).toUpperCase() + words[0].substr(1);
+                    words[0] = words[0].substr(0, 1).toUpperCase() + words[0].substr(1);
                     var sentence = words.join(' ');
 
                     sentences.push(sentence);
@@ -72,40 +67,42 @@ var Lorem;
                 break;
         }
     };
-    Lorem.prototype.createLorem = function(element)
-    {
+    Lorem.prototype.createLorem = function(element) {
 
         var lorem = new Array;
         var count = parseInt(this.query);
 
-        if (/\d+p/.test(this.query)) {var type = Lorem.TYPE.PARAGRAPH;}
-        else if (/\d+s/.test(this.query)) {var type = Lorem.TYPE.SENTENCE;}
-        else if (/\d+w/.test(this.query)) {var type = Lorem.TYPE.WORD;}
+        if (/\d+p/.test(this.query)) {
+            var type = Lorem.TYPE.PARAGRAPH;
+        }
+        else if (/\d+s/.test(this.query)) {
+            var type = Lorem.TYPE.SENTENCE;
+        }
+        else if (/\d+w/.test(this.query)) {
+            var type = Lorem.TYPE.WORD;
+        }
 
         lorem.push(this.createText(count, type));
         lorem = lorem.join(' ');
 
-        if (element)
-        {
+        if (element) {
             if (this.type == Lorem.TEXT)
-                element.innerText += lorem;
-            else if (this.type == Lorem.IMAGE)
-            {
+                element.innerHTML += lorem;
+            else if (this.type == Lorem.IMAGE) {
                 //TODO: for now, using lorempixum.
                 var path = 'http://lorempixum.com/';
                 var options = this.query.split(' ');
-                if (options[0] == 'gray')
-                {
+                if (options[0] == 'gray') {
                     path += '/g';
                     options[0] = '';
                 }
                 if (element.getAttribute('width'))
-                    path += '/'+element.getAttribute('width');
+                    path += '/' + element.getAttribute('width');
 
                 if (element.getAttribute('height'))
-                    path += '/'+element.getAttribute('height');
-                
-                path += '/'+options.join(' ').replace(/(^\s+|\s+$)/, '');
+                    path += '/' + element.getAttribute('height');
+
+                path += '/' + options.join(' ').replace(/(^\s+|\s+$)/, '');
                 element.src = path.replace(/\/\//, '/');
             }
         }
@@ -115,11 +112,9 @@ var Lorem;
     };
 
     //Register as jQuery
-    if (typeof jQuery != 'undefined')
-    {
-        (function($) {
-            $.fn.lorem = function()
-            {
+    if (typeof jQuery != 'undefined') {
+        (function($) {
+            $.fn.lorem = function() {
                 $(this).each(function() {
                     var lorem = new Lorem;
                     lorem.type = $(this).is('img') ? Lorem.IMAGE : Lorem.TEXT;
@@ -129,7 +124,7 @@ var Lorem;
             };
 
             //If developer run this javascript, then we can run the lorem.js
-            $(document).ready(function(){
+            $(document).ready(function() {
                 $('[data-lorem]').lorem();
             });
         })(jQuery);
