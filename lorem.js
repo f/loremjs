@@ -90,7 +90,7 @@ var Lorem;
                 element.innerHTML += lorem;
             else if (this.type == Lorem.IMAGE) {
                 //TODO: for now, using lorempixum.
-                var path = 'http://lorempixum.com/';
+                var path = '';
                 var options = this.query.split(' ');
                 if (options[0] == 'gray') {
                     path += '/g';
@@ -103,7 +103,7 @@ var Lorem;
                     path += '/' + element.getAttribute('height');
 
                 path += '/' + options.join(' ').replace(/(^\s+|\s+$)/, '');
-                element.src = path.replace(/\/\//, '/');
+                element.src = 'http://lorempixum.com'+path.replace(/\/\//, '/');
             }
         }
 
