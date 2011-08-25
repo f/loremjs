@@ -118,7 +118,8 @@ var Lorem;
                 $(this).each(function() {
                     var lorem = new Lorem;
                     lorem.type = $(this).is('img') ? Lorem.IMAGE : Lorem.TEXT;
-                    lorem.query = $(this).attr('data-lorem');
+                    //data-lorem can be taken with data function (thanks to http://forrst.com/people/webking)
+                    lorem.query = $(this).data('lorem');
                     lorem.createLorem(this);
                 })
             };
