@@ -76,7 +76,7 @@ var Lorem;
             var range = this.query.replace(/[a-z]/,'').split("-");
             count = Math.floor(Math.random() * parseInt(range[1])) + parseInt(range[0]);
         }else{
-            count = parseInt(this.query);
+            count = parseInt(this.query); 
         }
         
         if (/\d+p/.test(this.query)) {
