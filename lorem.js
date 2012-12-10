@@ -70,8 +70,15 @@ var Lorem;
     Lorem.prototype.createLorem = function(element) {
 
         var lorem = new Array;
-        var count = parseInt(this.query);
-
+        var count;
+        
+        if (/\d+-\d+[psw]/.test(this.query)){
+            var range = this.query.replace(/[a-z]/,'').split("-");
+            count = Math.floor(Math.random() * parseInt(range[1])) + parseInt(range[0]);
+        }else{
+            count = parseInt(this.query);
+        }
+        
         if (/\d+p/.test(this.query)) {
             var type = Lorem.TYPE.PARAGRAPH;
         }
