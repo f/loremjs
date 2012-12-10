@@ -19,6 +19,7 @@ If you want to put a lorem text inside a DIV (etc.) tag just write:
     <div data-lorem="2p"></div>
 
 If you want a random length of lorem text within a range just write:
+
     <div data-lorem="2-4p"></div>
 
 Querying
