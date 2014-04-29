@@ -42,7 +42,7 @@ var Lorem;
                 for (var i = 0; i < count; i++) {
                     var paragraphLength = this.randomInt(10, 20);
                     var paragraph = this.createText(paragraphLength, Lorem.TYPE.SENTENCE);
-                    paragraphs.push(paragraph);
+                    paragraphs.push('<p>'+paragraph+'</p>');
                 }
                 return paragraphs.join('\n');
                 break;
