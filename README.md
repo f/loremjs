@@ -37,7 +37,7 @@ That's it.
 Dummy Images
 ------------
 
-And Lorem.js uses lorempixum.com for images for now.
+And Lorem.js uses lorempixel.com for images for now.
 
 Usage:
 
