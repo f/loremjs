@@ -96,7 +96,7 @@ var Lorem;
             if (this.type == Lorem.TEXT)
                 element.innerHTML += lorem;
             else if (this.type == Lorem.IMAGE) {
-                //TODO: for now, using lorempixum.
+                //TODO: for now, using lorempixel.
                 var path = '';
                 var options = this.query.split(' ');
                 if (options[0] == 'gray') {
