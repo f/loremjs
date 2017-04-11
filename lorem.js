@@ -96,7 +96,7 @@ var Lorem;
             if (this.type == Lorem.TEXT)
                 element.innerHTML += lorem;
             else if (this.type == Lorem.IMAGE) {
-                //TODO: now, using loremflickr.
+                //TODO: for now, using lorempixum.
                 var path = '';
                 var options = this.query.split(' ');
                 if (options[0] == 'gray') {
@@ -110,9 +110,7 @@ var Lorem;
                     path += '/' + element.getAttribute('height');
 
                 path += '/' + options.join(' ').replace(/(^\s+|\s+$)/, '');
-                //Adding random to avoid duplicate image on same page
-                path += '?random=' + Math.floor((Math.random() * 9999) + 1); 
-                element.src = 'http://loremflickr.com'+path.replace(/\/\//, '/');
+                element.src = 'http://lorempixum.com'+path.replace(/\/\//, '/');
             }
         }
 
