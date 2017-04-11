@@ -1,0 +1,19 @@
+{
+  "name": "loremjs",
+  "version": "1.0.1",
+  "description": "A Lorem Ipsum creator service written on JavaScript.",
+  "main": "lorem.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/lukecampbell/loremjs"
+  },
+  "author": "Fatih Kadir Akın <fka@fatihak.in>",
+  "license": "LGPLv3",
+  "bugs": {
+    "url": "https://github.com/lukecampbell/loremjs/issues"
+  },
+  "homepage": "https://github.com/lukecampbell/loremjs"
+}
