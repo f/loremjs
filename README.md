@@ -47,18 +47,4 @@ Usage:
 
 And watch what happens :)
 
-Native JavaScript (without any framework)
-----------------------------------------
-
-If you want to use Lorem generator natively, (without jQuery).
-
-With Native support, you can lorem.js into your framework.
-
-Usage:
-
-    var lorem = new Lorem;
-    lorem.type = Lorem.TEXT;
-    lorem.query = '2p';
-    lorem.createLorem(document.getElementById('lorem'));
-
 Feel free to ask questions.
