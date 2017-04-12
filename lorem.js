@@ -124,7 +124,6 @@ var Lorem;
             if(els.hasOwnProperty(i)){
                 var lorem = new Lorem;
                 lorem.type = els[i].tagName=='IMG' ? Lorem.IMAGE : Lorem.TEXT;
-                //data-lorem can be taken with data function (thanks to http://forrst.com/people/webking)
                 lorem.query = els[i].getAttribute('data-lorem');
                 lorem.createLorem(els[i]);
             }
