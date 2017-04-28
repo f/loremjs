@@ -1,4 +1,4 @@
-Lorem.js Dummy Text/Image Generator jQuery and Native JS
+Lorem.js Dummy Text/Image Generator - Native JS
 ========================================================
 A Lorem Ipsum creator service written on JavaScript.
 

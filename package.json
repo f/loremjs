@@ -8,12 +8,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/lukecampbell/loremjs"
+    "url": "git://github.com/f/loremjs"
   },
   "author": "Fatih Kadir Akın <fka@fatihak.in>",
   "license": "LGPLv3",
   "bugs": {
-    "url": "https://github.com/lukecampbell/loremjs/issues"
+    "url": "https://github.com/f/loremjs/issues"
   },
-  "homepage": "https://github.com/lukecampbell/loremjs"
+  "homepage": "https://github.com/f/loremjs"
 }

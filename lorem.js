@@ -45,7 +45,6 @@ var Lorem;
                     paragraphs.push('<p>'+paragraph+'</p>');
                 }
                 return paragraphs.join('\n');
-                break;
             //sentences are loads of words.
             case Lorem.TYPE.SENTENCE:
                 var sentences = new Array;
@@ -57,14 +56,12 @@ var Lorem;
 
                     sentences.push(sentence);
                 }
-                return (sentences.join('. ') + '.').replace(/(\.\,|\,\.)/g, '.');
-                break;
+                return (sentences.join('. ') + '.');
             //words are words
             case Lorem.TYPE.WORD:
                 var wordIndex = this.randomInt(0, Lorem.WORDS.length - count - 1);
 
-                return Lorem.WORDS.slice(wordIndex, wordIndex + count).join(' ').replace(/\.|\,/g, '');
-                break;
+                return Lorem.WORDS.slice(wordIndex, wordIndex + count).join(' ').replace(/[\.\,]/g,'');
         }
     };
     Lorem.prototype.createLorem = function(element) {
@@ -73,19 +70,20 @@ var Lorem;
         var count;
 
         if (/\d+-\d+[psw]/.test(this.query)){
-            var range = this.query.replace(/[a-z]/,'').split("-");
+            var range = this.query.substring(0,this.query.length-1).split("-");
             count = Math.floor(Math.random() * parseInt(range[1])) + parseInt(range[0]);
         }else{
             count = parseInt(this.query);
         }
 
-        if (/\d+p/.test(this.query)) {
+        var typeInput = this.query[this.query.length-1];
+        if (typeInput=='p') {
             var type = Lorem.TYPE.PARAGRAPH;
         }
-        else if (/\d+s/.test(this.query)) {
+        else if (typeInput=='s') {
             var type = Lorem.TYPE.SENTENCE;
         }
-        else if (/\d+w/.test(this.query)) {
+        else if (typeInput=='w') {
             var type = Lorem.TYPE.WORD;
         }
 
@@ -101,7 +99,7 @@ var Lorem;
                 var options = this.query.split(' ');
                 if (options[0] == 'gray') {
                     path += '/g';
-                    options[0] = '';
+                    options.shift(); // Remove first element.
                 }
                 if (element.getAttribute('width'))
                     path += '/' + element.getAttribute('width');
@@ -109,8 +107,8 @@ var Lorem;
                 if (element.getAttribute('height'))
                     path += '/' + element.getAttribute('height');
 
-                path += '/' + options.join(' ').replace(/(^\s+|\s+$)/, '');
-                element.src = 'http://lorempixel.com'+path.replace(/\/\//, '/');
+                path += '/' + options.join(' ');
+                element.src = 'http://lorempixel.com'+path;
             }
         }
 
@@ -124,7 +122,6 @@ var Lorem;
             if(els.hasOwnProperty(i)){
                 var lorem = new Lorem;
                 lorem.type = els[i].tagName=='IMG' ? Lorem.IMAGE : Lorem.TEXT;
-                //data-lorem can be taken with data function (thanks to http://forrst.com/people/webking)
                 lorem.query = els[i].getAttribute('data-lorem');
                 lorem.createLorem(els[i]);
             }
