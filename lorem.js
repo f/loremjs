@@ -71,7 +71,7 @@ var Lorem;
 
         if (/\d+-\d+[psw]/.test(this.query)){
             var range = this.query.substring(0,this.query.length-1).split("-");
-            count = Math.floor(Math.random() * parseInt(range[1])) + parseInt(range[0]);
+            count = this.randomInt(parseInt(range[0]),parseInt(range[1]));
         }else{
             count = parseInt(this.query);
         }
@@ -112,8 +112,7 @@ var Lorem;
             }
         }
 
-        if (element == null)
-            return lorem;
+        if (element == null) return lorem;
     };
 
     window.addEventListener('DOMContentLoaded',function(){
